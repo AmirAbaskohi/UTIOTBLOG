@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-posts' post.author.id %}">{{ post.author }}</a>
+              <a class="mr-2" href="{% url 'topic-posts' post.category %}">Topic: {{ post.category }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+    {% if posts.has_other_pages %}
+      <ul class="pagination">
+        {% if posts.has_previous %}
+          <li><a href="?page=1" class="btn btn-outline-info mb-4">First</a></li>
+          <li><a href="?page={{ posts.previous_page_number }}" class="btn btn-outline-info mb-4">Previous</a></li>
+        {% endif %}
+        {% for i in posts.paginator.page_range %}
+          {% if posts.number == i %}
+            <li class="active"><a href="?page={{ i }}" class="btn btn-info mb-4">{{ i }}</a></li>
+          {% elif i > posts.number|add:'-3' and i < posts.number|add:'3' %}
+            <li><a href="?page={{ i }}" class="btn btn-outline-info mb-4">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if posts.has_next %}
+          <li><a href="?page={{ posts.next_page_number }}" class="btn btn-outline-info mb-4">Next</a></li>
+          <li><a href="?page={{ posts.next_page_number }}" class="btn btn-outline-info mb-4">Last</a></li>
+        {% endif %}
+      </ul>
+    {% endif%}
+{% endblock content %}
