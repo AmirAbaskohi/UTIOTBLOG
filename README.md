@@ -5,17 +5,13 @@
 
 Full-Featured Blog with Django web framework. 
 
-Screenshots
-=
-<img src="screenshots/index.png" width=400><img src="screenshots/login.png" width=400>
-<img src="screenshots/profile.png" width=400><img src="screenshots/new_post.png" width=400>
-<img src="screenshots/post.png" width=400><img src="screenshots/delete.png" width=400>
-
 Features 
 =
 - User Registration
 - User Login & Logout
 - User Profile
+- Showing logged in user un page
+- Give special users permission to add posts
 - Create, Update, Edit & Delete Posts
 - Comments
 - Search
