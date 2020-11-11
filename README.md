@@ -60,14 +60,3 @@ $ python manage.py shell
 ```
 > You can edit posts via admin panel or from corrent user added post.
 
-TODOS
-=
-- Change Style
-- More Options For New Post
-- Sidebar
-- Reply comment
-- Search for post any pages
-- Create following system
-- Read later post
-- Like post
-- ...
